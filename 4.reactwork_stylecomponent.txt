@@ -1,0 +1,14 @@
+▶ style component 설치 
+
+경로 : 
+      https://styled-components.com/docs/basics#installation
+
+설치 명령어 :
+      npm install --save styled-components
+
+yarn 설치(필요하면)
+      npm install -g yarn
+
+
+디자인을 동적으로 결정 
+https://styled-components.com/docs/basics#passed-props

@@ -1,0 +1,119 @@
+▶ React 엔진
+
+  return <div>해<div>달</div></div>  =>  
+
+moon.js 생성 및 import 후  return <div>해<moon /></div>
+부모가 app.js 자식이 moon.js 가 되는 상황
+
+부모가 다시 그리려면 자식도 다시 그려야할지 연산(레퍼런스로 비교하고 끝낸다)
+ -> "깊은 복사(불변함수)" , 깊은 복사랑 연관되어있는 함수가 있다 (불변함수 4가지concat, filter, map, slice, 스프레드(전개) 연산자 )
+     참조가 아닌 메모리를 새로 할당해서 복사하는 함수 인듯 
+
+
+https://developer.mozilla.org/ko/
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //concat, filter, map, slice, 스프레드(전개) 연산자
+
+        console.log("1.========================= 스프레드 연산자")
+        const a = [1,2,3];
+        const b = [...a]; // spread 연산자 b에 a 1,2,3 복사 ... 으로 작성 
+        b.push(4) ; // b에 4추가 
+        console.log(`a의 값은: ${a}`); // 1,2,3
+        console.log(`b의 값은: ${b}`); // 1,2,3,4
+
+
+        console.log("2.========================= 추가하기")  
+        const a2 =[1,2,3];
+        const b2 = a2.concat(4);
+
+        console.log(`a2의 값은: ${a2}`); // 1,2,3
+        console.log(`b2의 값은: ${b2}`); // 1,2,3,4
+        const c2 = [0,...a2,4];  // 앞뒤로 넣을 수 있다.
+        console.log(`c2의 값은: ${c2}`); // 1,2,3,4
+
+        console.log("3.========================= 걸러내기") //보통 삭제할 때 사용
+        const a3 =[1,2,3];
+                                // 익명함수 
+        const b3 = a3.filter((n)=>{ return n != 1;});
+
+        console.log(`a3의 값은: ${a3}`); // 1,2,3
+        console.log(`b3의 값은: ${b3}`); // 2,3
+
+        console.log("4.========================= 잘라내기") 
+        const a4 =[1,2,3];
+                                // 익명함수 
+        const b4 = a3.slice(0,2);
+
+        console.log(`a4의 값은: ${a4}`); // 1,2,3
+        console.log(`b4의 값은: ${b4}`); // 1,2
+
+        const c4 = [a4.slice(0,2)];
+
+        console.log(b4); // [1,2] 
+        console.log(c4); // [[1,2]]  이렇게 되니까 d4 처럼 스프레드로 
+
+        d4 = [...a4.slice(0,2),4,...a4.slice(2,3)];
+
+        console.log(b4); 
+        console.log(d4); 
+
+
+        console.log("5.========================= 반복하기") 
+        const a5 = [1,2,3];
+        for(let i = 0; i< a5.length; i++) {  //JSX 에서 사용 불가 
+            console.log(a5[i]);
+        }
+
+            //console.log에 중괄호를 삭제 하면 return 문이 된다. 
+        a5.forEach((i)=>{console.log(i)}); // void라 return 불가, 복사 불가
+
+        // const b5 =a5.map((n) => n); 과  const b5 =a5.map((n) => {return n;}); 는 같다.
+        
+        const b5 =a5.map((n) => {return n+10;}); //가공할 수 있다. 반복해서 가공해서 return 
+
+        console.log(b5);
+
+
+        console.log("6.========================= 수정하기") 
+
+        const data ={phone:"2222"};
+        const a6 = {id:1, name:"홍길동", phone:"1111", age:17, gender:"남"};
+        const b6 = {...a6, ...data}; //덮어 씌운다
+        
+        //const b6 = {...a6, name:"임꺽정"};
+        //const b6 = {id:1, name:"홍길동", name:"임꺾정"}; 위에 거랑 이거는 같다. 
+        
+        console.log(b6);
+
+
+        //java script object 
+        const users = [
+            {id:1, name:"구태모", phone:"2222"},
+            {id:2, name:"이대엽", phone:"3333"},  //2번을  홍길동으로 변경 
+            {id:3, name:"오승훈", phone:"4444"}
+        ];
+
+        const updateUserDto = {
+            id:2, name:"홍길동"
+        };
+
+        //users[1].name = updateUserDto.name; // 이렇게 변경하면 기존 데이터가 변경 ??
+
+        //filter 사용하면 조건 안맞는 데이터가 삭제 된다. 
+        const newUser = users.map(  (n)=>{ return n.id === updateUserDto.id ? {...n ,...updateUserDto}:n; });
+
+        console.log(newUser);
+
+    </script>
+</body>
+</html>

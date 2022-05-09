@@ -1,0 +1,44 @@
+import logo from './logo.svg';
+import './App.css';
+import { createRef, useRef, useState } from 'react';
+
+// useRef(디자인)
+// dom을 변경할 때 사용
+
+function App() {
+  const myRef = useRef(null);
+
+  const [list, setList] = useState([
+    { id: 1, name: '홍길동' },
+    { id: 2, name: '임꺽정' },
+  ]);
+
+  // Array.from 은 주어진 숫자만큼 빈 array 를 만들어서 리턴
+  // .map 으로 어떤 값을 넣어서 return 도 가능, ref를 동적으로 만들어서 return
+  const myRefs = Array.from({ length: list.length }).map(() => createRef());
+
+  return (
+    <div>
+      <button
+        onClick={() => {
+          console.log(myRef);
+          console.log(myRef.current);
+          myRef.current.style.backgroundColor = 'red';
+
+          myRefs[0].current.style.backgroundColor = 'red';
+          myRefs[1].current.style.backgroundColor = 'blue';
+        }}
+      >
+        색변경
+      </button>
+      <div ref={myRef}>
+        {/* map에 두번째 param에 index를 넣어주면 번호를 만들어서 index number를 리턴 */}
+        {list.map((user, index) => (
+          <h1 ref={myRefs[index]}>{user.name}</h1>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default App;

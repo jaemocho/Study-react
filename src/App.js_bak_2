@@ -1,0 +1,19 @@
+import logo from './logo.svg';
+import './App.css';
+
+
+function App() {
+
+  let list = [1,2,3];
+
+  /* foreach 는 return을 안해서 사용 불가 map으로 */
+  return (
+  <div>  
+    <div>{list.map(n=> (
+          <h1>{n}</h1>))}
+    </div> 
+  </div>
+  )
+}
+
+export default App;

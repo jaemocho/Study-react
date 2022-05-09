@@ -1,0 +1,37 @@
+▶ React(demon) -> ajax -> 데이터 변경감시 -> UI 자동 업데이트
+
+▶ node.js 설치
+https://nodejs.org/ko/?msclkid=32ce4794ce7011ec81dcae005eb44b9c
+
+▶ visual studio code 에서 새 터미널 열어서 version 확인
+node --version
+npm --version
+npx --version
+
+▶ npm/npx = maven/gradle 같은 api repository
+   아무거나 사용가능
+   npm -> 라이브러리를 다운 - 빌드 -> 프로젝트 3개(각각 프로젝트마다 로컬에 다 다운) - 프로젝트마다, 글로벌(모든 프로젝트가 바라볼 수 있게)
+   npx -> 라이브러리를 다운 - 빌드 -> 프로젝트 3개(이미 다운받은게 있으면 재사용, 없으면 다운) -> 실행 -> 실행 후 삭제
+
+▶ react 설치 
+https://reactjs-kr.firebaseapp.com/docs/installation.html
+
+ - 설치 명령어
+   npx create-react-app my-app
+
+ - start 명령어 
+   cd my-app
+   npm start
+
+▶ react 관련 plug-in 설치
+visual code studio에 
+ESLint 설치(문법 검사)
+Prettier 설치(코드 포매터)  - .prettierrc 파일 만들고 설정 추가 - 폴더 최상단
+Reactjs code snippets(자동완성)
+vscode-styled-components - stylecomponents 용 
+
+
+설치 후 visual studio code 재실행 필요
+※ 컴파일 언어가 아니고 인터프리터 언어라 검사기 있으면 좋다 
+
+

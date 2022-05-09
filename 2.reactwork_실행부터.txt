@@ -1,0 +1,40 @@
+▶ npm start 시 
+
+package.json의 
+
+"scripts": {
+    "start": "react-scripts start",  << 이부분 실행 index.js 를 실행 
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+
+ReactDOM.render의  <App />  => app.js의 app() 수행
+
+ReactDOM.createRoot(document.getElementById('root')); 의 root는 index.html의 <div id="root"></div> 를 찾는다. 
+결국 열리는 file은 index.html
+
+▶ SPA
+ 바디만 바뀐다. 
+
+0. React 엔진 - 데이터 변경감지해서 UI 그려주는 
+1. 실행과정(index.html) - SPA ( a 태그 사용 불가)
+2. 문법(JSX 문법)
+3. 바벨(자바스크립트 ES5) -> ES6(함수형으로 만들 수 있음) : ES6를 ES5로 변경해주는 컴파일러
+
+
+▶ JSX문법
+(1) return시 하나의 Dom(태그)만 리턴할 수 있다 -필요하면 안에 넣어라 
+(2) 변수선언은 let 혹은 const로만 해야함 
+    (var 은 사용하지 않는 걸로 - 스코프가 좀 이상함.. 지역변수로 쓴게 다른 곳에서 사용가능 할 때가 있다)
+(3) if 사용 불가능 x -> 삼항연산자 사용가능
+   ( == 변수 검사 === 타입까지검사)
+(4) 조건부 렌더링(조건 && 값(true))
+   {b === 20 && '20입니다'}  이러면 나오고 
+   {b === 21 && '20입니다'}  이면 렌더링이 안된다.
+(5) css디자인
+    - 내부에 적는 방법
+    - 외부파일에 적는 방법
+    - 라이브러리 사용(부트스트랩, component-style)
+
+
