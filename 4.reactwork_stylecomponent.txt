@@ -12,3 +12,6 @@ yarn 설치(필요하면)
 
 디자인을 동적으로 결정 
 https://styled-components.com/docs/basics#passed-props
+
+스타일 상속
+https://styled-components.com/docs/basics#extending-styles

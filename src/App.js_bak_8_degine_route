@@ -1,0 +1,33 @@
+import logo from './logo.svg';
+import './App.css';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import { Route, Routes } from 'react-router-dom';
+
+//https://styled-components.com/
+
+// useRef(디자인)
+// dom을 변경할 때 사용
+
+// styledComponents.h1` 는 var t = document.createElement("h1"); 과 같다.
+// styledComponents를 MyCss 에 파일로 빼서 사용 가능
+
+const a = {
+  backgroundColor: 'red',
+};
+
+function App() {
+  return (
+    <div>
+      <Header />
+      {/* exact option을 넣으면 path 를 정확히 인식하라 라는 뜻 없으면 처음 / 에서 /, /login 둘다 읽음  */}
+      <Route path={'/'} exact={true} component={HomePage} />
+      <Route path={'/login/:id'} exact={true} component={LoginPage} />
+      <Footer />
+    </div>
+  );
+}
+
+export default App;

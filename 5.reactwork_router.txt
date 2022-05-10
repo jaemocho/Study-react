@@ -1,0 +1,34 @@
+▶ react router
+react 는 </a> 태그 사용 불가 - 전체를 다시 불러오기때문에 사용 안한다 (SPA)
+
+react-router-dom 설치 
+
+https://www.npmjs.com/package/react-router-dom
+
+설치 명령어 
+npm i react-router-dom
+
+index.js 에 <App> 를 BrowserRouter로 감싼다.
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+
+
+App.js에 아래내용 삽입
+url 이 / 일경우 HomePage로 이동
+exact option을 넣으면 path 를 정확히 인식하라 라는 뜻 없으면 처음 / 에서 /, /login 둘다 읽음 
+<Route path="/" exact={true} component={HomePage} />
+
+
+match param 으로 데이터를 받을 수 있다. 
+넘어간 page 에서 아래와 같이 확인할 수 있다.
+  console.log(props.match.params.id);
+
+App.js
+<Route path={'/login/:id'} exact={true} component={LoginPage} />
+
+LoginPage.js
+const LoginPage = (props) => {
+  //match param 으로 데이터를 받을 수 있다. 
+  console.log('LoginPage', props);
+  console.log(props.match.params.id);
