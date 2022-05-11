@@ -1,0 +1,58 @@
+▶ react redux 설치 
+https://react-redux.js.org/introduction/getting-started
+설치 실패시 yarn 으로 설치 가끔충돌남
+
+npm install react-redux
+createStore 를 사용하기 위해선 npm install redux 도 설치 필요
+
+▶ store 생성
+사용자 session 같은거 관리할 때 유용
+//액션
+export const increase = () => ({ type: 'INCREMENT' });
+export const decrease = () => ({ type: 'DECREMENT' });
+
+//상태
+
+const initstate = {
+  number: 0,
+};
+
+//액션의 결과를 걸러내는 기능
+const reducer = (state = initstate, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { number: state.number + 1 }; // return 되면 그걸 호출하는 쪽에서 받는게 아니라 return 되는 순간 ui 변경이 된다.
+    case 'DECREMENT':
+      return { number: state.number - 1 };
+    default:
+      return state;
+  }
+};
+
+export default reducer;
+
+위와 같이 만들고 
+
+index.js 에 
+
+                           // export default reducer 로 했기 때문에 파라메터 명이 reducer
+const store = createStore(reducer); 만들고 
+//
+
+<App /> 를 <Provider> 로 감싸준다. 
+  
+ <BrowserRouter>
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
+  </BrowserRouter>,
+
+다른 컴포넌트에서 아래와 같이 호출해서 사용
+const number = useSelector((store)=>store.number);
+
+
+
+
+
